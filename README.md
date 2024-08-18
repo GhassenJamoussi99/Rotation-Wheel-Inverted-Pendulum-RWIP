@@ -1,4 +1,6 @@
-# Software
+[![Swing-Up Stabilization with Force](http://img.youtube.com/vi/k0FuAN_W_Ps/0.jpg)](http://www.youtube.com/watch?v=k0FuAN_W_Ps)
+
+# Rotation-Wheel-Inverted-Pendulum-RWIP
 This README provides step-by-step instructions on how to set up and run the RWIP software for your STM32 project.
 
 ## Getting started
