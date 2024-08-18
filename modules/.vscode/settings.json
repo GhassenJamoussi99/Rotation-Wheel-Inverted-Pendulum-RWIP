@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "encoder.h": "c",
+        "display.h": "c"
+    }
+}

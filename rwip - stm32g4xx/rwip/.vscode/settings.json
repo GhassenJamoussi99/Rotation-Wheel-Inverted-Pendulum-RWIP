@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "encoder_speed_pos_fdbk.h": "c",
+        "mc_tasks.h": "c",
+        "mc_type.h": "c",
+        "mc_app_hooks.h": "c",
+        "cmath": "c",
+        "*.tcc": "c",
+        "cinttypes": "c",
+        "cstdlib": "c",
+        "trajectory_ctrl.h": "c",
+        "mc_stm_types.h": "c"
+    }
+}
