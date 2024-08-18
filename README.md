@@ -3,6 +3,17 @@
 # Rotation-Wheel-Inverted-Pendulum-RWIP
 This README provides step-by-step instructions on how to set up and run the RWIP software for your STM32 project.
 
+
+## Project objectives
+
+The RWIP project aims to design and build an inverted pendulum that automatically erects the pendulum to an upright position in a closed loop system. The project objectives are as followed:
+
+The system
+* shall be able to erect itself by the reaction wheels movement alone.
+* shall keep itself in an upright position defying outside forces.
+* shall achieve its movement by rotating a reaction wheel resulting in a torque for the entire pendulum.
+* shall be driven by a BDLC motor controlled in a closed-loop system.
+
 ## Getting started
 
 1. Create an STM Project:
