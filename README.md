@@ -1,13 +1,9 @@
 
-<h1 align="center">
-  <img src="https://github.com/GhassenJamoussi99/Rotation-Wheel-Inverted-Pendulum-RWIP/blob/main/docs/figures/rwip.gif" width="600">
-  <br>
-  <a href="http://www.youtube.com/watch?v=k0FuAN_W_Ps" target="_blank" 
-     style="font-size: 16px;">
-    Swing Up and Stabilization with External Forces
+<div align="center">
+  <a href="http://www.youtube.com/watch?v=k0FuAN_W_Ps" target="_blank">
+    <img src="https://github.com/GhassenJamoussi99/Rotation-Wheel-Inverted-Pendulum-RWIP/blob/main/docs/figures/rwip.gif" width="600" alt="Swing Up and Stabilization with External Forces">
   </a>
-</h1>
-
+</div>
 
 # Rotation-Wheel-Inverted-Pendulum-RWIP
 This README provides step-by-step instructions on how to set up and run the RWIP software for your STM32 project.
