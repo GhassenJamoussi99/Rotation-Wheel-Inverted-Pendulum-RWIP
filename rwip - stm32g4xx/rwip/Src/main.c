@@ -269,122 +269,22 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  //encoder.calculatePendulumVelocity();
-		//MC_ProgramSpeedRampMotor1(-1500/6,0);
-	 // encoder.pendulum_velocity = encoder.calculatePendulumVelocity(); // works only with printf for some reason
-	 encoder.pendulum_velocity = encoder.calculatePendulumVelocity();
-   encoder.pendulum_acceleration = encoder.calculatePendulumAcceleration();
-
-	 //printf("encoder.pendulum_angle = %f\r\n",encoder.pendulum_angle);
-	 if ((angle2 > pre_stabilize_limit) && (angle2 < post_stabilize_limit))
-	 //if ((encoder.pendulum_angle > pre_stabilize_limit) && (encoder.pendulum_angle < post_stabilize_limit))
-    {
+    encoder.pendulum_velocity = encoder.calculatePendulumVelocity();
+    encoder.pendulum_acceleration = encoder.calculatePendulumAcceleration();
+    if ((angle2 > pre_stabilize_limit) && (angle2 < post_stabilize_limit))
+     {
       if (trig == 0){
         printf("Computing stabilize algorithm...\r\n");
         printf("encoder.pendulum_angle = %f\r\n",encoder.pendulum_angle);
         fflush(stdout);
         trig = 1;
-      }
-		 regulator.computeStabilization();
-		 start_stabilization = 1;
-    } else {
-    	 start_stabilization = 0;
-		 //regulator.computeSwingUp();
-	  }
-
-
-
-    // printf("Angle M2- = %.2f\r\n", angle2);
-
-    /*
-     MC_ProgramTorqueRampMotor1(7000, 0); // turns to the left   - indirecte
-    HAL_Delay(5000);
-    MC_ProgramTorqueRampMotor1(0, 0);
-    HAL_Delay(400);
-*/
-
-
-	  /*
-
-          MC_ProgramSpeedRampMotor1(1500/6,0);
-          HAL_Delay(5000);
-          MC_ProgramSpeedRampMotor1(0,0);
-          HAL_Delay(400);
-*/
-    // errorHandling.fault_code = errorHandling.getMotorStatus(motor_instance);
-    // printf("Current motor status = %s\r\n", errorHandling.fault_code);
-
-
-
-//	 MC_ProgramSpeedRampMotor1(0, 0);
-
-
-
-
-
-
-    //} else {
-
-
-
-
-	  //printf("Start stabilize \r\n");
-  //    while (angle2 <= untere_grenze || angle2 >= obere_grenze){
-		 // printf("Start stabilize \r\n");
-
-		  //MC_ProgramSpeedRampMotor1(800/6, 0);
-		  //HAL_Delay(400);
-		  //MC_ProgramSpeedRampMotor1(-800/6, 0);
-		  //HAL_Delay(400);
-
-
-
-		  //printf("Angle = %f\r\n", angle2);
-
-    	  //if (neutral_angle == 180) {
-    	  //	 MC_ProgramSpeedRampMotor1(0,0);
-
-    	  //}
-
-    	  /*
-
-
-      //regulator.computeSwingUp();
-  //  }
-*/
-
-    /*
-     * TODO:
-     * Set functions for Torque and Speed ?
-     * Develop a seperate thread for the motor
-     * Global variable for Torque so that we can change it asynchronously.
-     */
-
-    // MC_ProgramSpeedRampMotor1(1500/6, 0); //turns to the left
-    // HAL_Delay(1000);
-    // MC_ProgramSpeedRampMotor1(0/6, 0); //turns to the right
-    // HAL_Delay(400);
-    /*
-    MC_ProgramTorqueRampMotor1(6000, 0); //turns to the left
-    HAL_Delay(5000);
-    MC_ProgramTorqueRampMotor1(0, 0); //turns to the right
-    HAL_Delay(200);
-    */
-
-    // if (angle2 > -150){
-
-    //}
-
-    /*
-    if (angle2 > 0) {
-      MC_ProgramSpeedRampMotor1(-1500/6, 0);
-    } else
-    {
-      MC_ProgramSpeedRampMotor1(1500/6, 0);
-    }
-    */
-
-    // test++;
+       }
+       regulator.computeStabilization();
+       start_stabilization = 1;
+     } else {
+    	start_stabilization = 0;
+	regulator.computeSwingUp();
+     }
   }
   /* USER CODE END 3 */
 }
