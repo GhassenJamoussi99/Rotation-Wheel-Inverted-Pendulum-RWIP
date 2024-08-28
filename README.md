@@ -18,33 +18,8 @@ The system
 * shall keep itself in an upright position defying outside forces.
 * shall achieve its movement by rotating a reaction wheel resulting in a torque for the entire pendulum.
 * shall be driven by a BDLC motor controlled in a closed-loop system.
-
-## Getting started
-
-1. Create an STM Project:
-    * Launch STM32CubeIDE and create a new STM32 project.
-    * Select the appropriate STM32 microcontroller model for your project.
-    * Configure the project settings according to your hardware requirements.
-
-2. Add Modules:
-
-    To enhance the versatility of this software and facilitate integration into different STM environment we added the modules folder separately so that you can seamlessly integrate the required modules into your STM32 project, regardless of the specific STM32 model or configuration.
-
-    The `modules/` folder structure is organized as follows:
-
-    `modules/Src`: Contains module source code files.
-
-    `modules/Inc`: Contains module header files.
-
-    * Navigate to the project directory.
-    * Copy the contents of these folders (`modules/Inc` and `modules/Src`) and paste them into your project's respective folders.
-
-3. Main Application:
-    * Locate the main.c file within the module folders.
-    * Copy the `main()` code from this file.
-    * Paste the code into your project's main.c file, overwriting the existing code or incorporating it as needed.
-
-## Module overview
+  
+## Modules overview
 
 ### Control Module
 #### Encoder 
