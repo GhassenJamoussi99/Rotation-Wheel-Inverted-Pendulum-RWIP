@@ -91,18 +91,22 @@ The Reaction Wheel Inverted Pendulum (RWIP) uses a **Linear Quadratic Regulator 
 1. **Reach upright position** – The pendulum is first brought to the inverted position using a swing-up mechanism.
 
 2. **Enter LQR Stabilization Loop** – The following steps repeat continuously:
+
    - **Measure pendulum angle**
    - **Measure pendulum velocity**
    - **Measure motor speed**
-   - **Calculate control signal** using:
-     \[
-     u = -Kx \quad \text{where } x = [\theta, \dot{\theta}, \omega]^\top
-     \]
+   - **Calculate control signal** using the LQR formula:  
+     `u = -Kx`  
+     where `x = [θ, θ̇, ω]ᵀ` represents the **state vector** of the system:
+
+     - `θ`: Pendulum angle (in radians)
+     - `θ̇`: Angular velocity of the pendulum
+     - `ω`: Angular velocity of the reaction wheel
+     - `ᵀ`: Transpose symbol indicating it's a column vector
    - **Feed signal to motor**
 
-This loop ensures the pendulum remains upright by minimizing a quadratic cost function defined over state deviations and control effort.
 
----
+This loop ensures the pendulum remains upright by minimizing a quadratic cost function defined over state deviations and control effort.
 
 ## 🧪 Test Results
 
