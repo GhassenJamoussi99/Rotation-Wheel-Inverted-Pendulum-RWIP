@@ -5,49 +5,142 @@
   </a>
 </div>
 
-# Rotation-Wheel-Inverted-Pendulum-RWIP
-This README provides step-by-step instructions on how to set up and run the RWIP software for your STM32 project.
+# 🌀 Reaction Wheel Inverted Pendulum (RWIP)
 
+A mechatronic control system that balances a pendulum in the upright position using a reaction wheel and feedback control algorithms.
 
-## Project objectives
+> 🚧 Version: **v1.0**  
+> 🗓️ Finalized: **January 2024**  
+> 🧑‍💻 Developed by: **Ghassen Jamoussi, Group-B @ HTW Berlin**
 
-The RWIP project aims to design and build an inverted pendulum that automatically erects the pendulum to an upright position in a closed loop system. The project objectives are as followed:
+---
 
-The system
-* shall be able to erect itself by the reaction wheels movement alone.
-* shall keep itself in an upright position defying outside forces.
-* shall achieve its movement by rotating a reaction wheel resulting in a torque for the entire pendulum.
-* shall be driven by a BDLC motor controlled in a closed-loop system.
-  
-## Modules overview
+## 📌 Project Summary
 
-### Control Module
-#### Encoder 
+The RWIP system uses a reaction wheel to control the balance of an inverted pendulum. It integrates real-time feedback, control algorithms (Swing-Up and LQR stabilization), and a graphical interface for monitoring and interaction.
 
-The Control module includes encoder implementation, which interfaces with the low-level API functions from MC (Motor Control) for smoother development and motor control.
+### Key Highlights
 
-#### Error Handling
+- Real-time stabilization of a pendulum
+- Control algorithm implemented in STM32
+- 3D-modeled mechanical design with laser-cut acrylic parts
 
-Error handling is integrated to manage issues that may arise during motor operation or software execution. This feature aids in debugging and troubleshooting.
+---
 
-#### Regulator
+## 🎯 Objectives
 
-The Regulator module is responsible for swing-up control, helping maintain the desired control state for the motor.
+- Integrate all RWIP subsystems (hardware, software, mechanical)
+- Test swing-up and stabilization mechanisms
+- Fix bugs and non-functional issues
+- Create documentation and user manuals
 
-### Interface Module
-The Interface module encompasses:
+---
 
-Display: Used to present motor and software status.
+## 🛠️ System Architecture
 
-LEDs: Indicate errors and motor/software status visually.
+### 🔌 Hardware Architecture
 
+![Hardware Architecture](.github/imgs/hardware_architecture.png)
 
-## Motor Control 
+The Reaction Wheel Inverted Pendulum system is built around an STM32 microcontroller and real-time feedback from motor and pendulum sensors.
 
-For a simple, first setup to get the motor rotating with an encoder in closed loop:
+#### 🧱 System Components
 
-- In Motor Control Workbench create a project with the profiled motor and add "quadrature encoder" as a sensor to it
-- Set the "Pulses per mechanical revolution" to whatever you set your encoder to. For the AMT103V I set 256 as higher values show a lot of noise though this can be done better later on (256 is still fine)
-- Set the "Alignment electrical angle of Id" to 90 degrees. The amps should be the max amps of the motor
-- The encoder counting has to match the rotation of the motor so clock wise motor should match clockwise encoder in the counting otherwise it might not work
-- Generate the project
+##### 🖥️ Control System
+
+- **STM32 Nucleo-G431RB**: Central microcontroller running control logic (Swing-Up and LQR)
+- **Laptop GUI**: Communicates with STM32 via UART over USB for logging, visualization, and commands
+- **Motor Driver (X-Nucleo-IHM08M1)**: Drives the BLDC motor with up to 15A RMS current
+- **Power Supply**: 12V DC powering motor driver and 5V DC powering MCU and sensors
+
+##### ⚙️ Sensors & Actuators
+
+- **AMT103 Incremental Encoder (1)**: Measures pendulum angular position
+- **AMT103 Incremental Encoder (2)**: Measures motor shaft speed
+- **BLDC Motor (MiToot-750kV)**: Provides reaction torque to balance the pendulum
+
+#### 📡 Signal Flow Overview
+
+- **Sensor Data**: Encoders send quadrature signals (A & B) to the MCU
+- **Control Execution**: STM32 computes motor commands based on encoder data
+- **Actuation**: Control signal is sent to the motor driver → drives BLDC motor
+- **Feedback Loop**: Motor rotation causes reaction torque to balance pendulum
+
+#### 🔁 Communication
+
+- UART: For GUI interaction and monitoring
+- GPIO/PWM: For encoder reading and motor control
+
+---
+
+### 💻 Software Architecture
+
+![Software Architecture](.github/imgs/software_architecture.png)
+
+---
+
+## 🧠 Stabilization Algorithm (LQR Control)
+
+![Algorithm Diagram](.github/imgs/algorithm.png)
+
+The Reaction Wheel Inverted Pendulum (RWIP) uses a **Linear Quadratic Regulator (LQR)** algorithm for real-time stabilization after reaching the upright position.
+
+### 🔁 Control Loop Steps
+
+1. **Reach upright position** – The pendulum is first brought to the inverted position using a swing-up mechanism.
+
+2. **Enter LQR Stabilization Loop** – The following steps repeat continuously:
+   - **Measure pendulum angle**
+   - **Measure pendulum velocity**
+   - **Measure motor speed**
+   - **Calculate control signal** using:
+     \[
+     u = -Kx \quad \text{where } x = [\theta, \dot{\theta}, \omega]^\top
+     \]
+   - **Feed signal to motor**
+
+This loop ensures the pendulum remains upright by minimizing a quadratic cost function defined over state deviations and control effort.
+
+---
+
+## 🧪 Test Results
+
+### 🔄 Integration of Swing-Up and Stabilization
+
+![Swing-Up and Stabilization](.github/imgs/tests.png)
+
+This test validates the combined behavior of the swing-up algorithm and the LQR stabilization loop. The pendulum starts from rest and is brought to the upright position, then stabilized.
+
+#### 📈 Results Summary
+
+- **Time to reach upright**: ≈ 3 seconds
+- **Stabilization algorithm starts**: At ≈ 160° (≈ 2.8 radians)
+- **System becomes fully stable**: At ≈ 5 seconds
+
+---
+
+### 📐 Stabilization Angle – Max Deflection
+
+![Max Deflection](.github/imgs/deflection.png)
+
+This test evaluates the pendulum's behavior during the stabilization phase, focusing on overshoot and settling time.
+
+#### 📈 Results Summary
+
+- **Max deflection angle**: ≈ 20° (from vertical)
+- **Stabilization time**: ≈ 2 seconds  
+  _(Time from reaching upright to achieving steady-state oscillation)_
+
+---
+
+### 🛡️ Stabilization with External Forces
+
+![External Forces](.github/imgs/external_forces.png)
+
+This test evaluates the robustness of the LQR controller under repeated external disturbances.
+
+#### 📈 Results Summary
+
+- **Test setup**: External forces ("Kraft") applied at ≈ 6s, 12s, 21s, and 29s
+- **Response**: Each disturbance triggers oscillations, followed by return to equilibrium
+- **Recovery time**: Stabilization is consistently achieved within a few seconds.
