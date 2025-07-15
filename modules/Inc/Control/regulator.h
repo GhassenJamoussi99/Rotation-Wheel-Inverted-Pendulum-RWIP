@@ -1,12 +1,16 @@
-#ifndef APPLICATION_USER_CONTROL_REGULATOR_H_
-#define APPLICATION_USER_CONTROL_REGULATOR_H_
+#pragma once
 
 #include "pid_regulator.h"
 #include "Control/encoder.h"
 
+/**
+ * @brief Positive swing-up angle threshold (degrees).
+ */
 #define POS_SWINGUP_ANGLE 120
+/**
+ * @brief Negative swing-up angle threshold (degrees).
+ */
 #define NEG_SWINGUP_ANGLE 240
-//#define NEUTRAL_ANGLE 180.5
 
 extern PID_Handle_t pid_regulator;
 extern volatile Encoder encoder;
@@ -21,11 +25,18 @@ extern int level;
 extern float Kr[3];
 extern int swing_level;
 
+/**
+ * @brief Structure for regulator operations.
+ */
 typedef struct {
-	void (*computeStabilization)();
-	void (*computeSwingUp)();
+    /**
+     * @brief Compute stabilization control.
+     */
+    void (*computeStabilization)(void);
+    /**
+     * @brief Compute swing-up control.
+     */
+    void (*computeSwingUp)(void);
 } Regulator;
-
-#endif /* APPLICATION_USER_CONTROL_REGULATOR_H_ */
 
 

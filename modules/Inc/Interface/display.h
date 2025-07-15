@@ -1,11 +1,14 @@
-#ifndef APPLICATION_USER_INTERFACE_DISPLAY_H_
-#define APPLICATION_USER_INTERFACE_DISPLAY_H_
+#pragma once
 
-
+/**
+ * @brief Structure for display interface operations.
+ */
 typedef struct {
-    void *(*show)(char *error);
+    /**
+     * @brief Show an error or status message on the display.
+     * @param error Error or status message string.
+     */
+    void (*show)(char *error);
 } Display;
-
-#endif /* APPLICATION_USER_INTERFACE_DISPLAY_H_ */
 
 

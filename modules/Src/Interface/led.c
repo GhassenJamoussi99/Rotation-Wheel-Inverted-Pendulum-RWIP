@@ -1,59 +1,40 @@
 #include "Interface/led.h"
+#include <stdio.h>
 
 /**
- * @brief Indicate an error condition by turning on the red LED and turning off the 
- * yellow and green LEDs.
- * 
- * Note: GPIO pins for the LEDs need to be defined separately.
+ * @brief Indicate an error condition by turning on the red LED and turning off the yellow and green LEDs.
  */
-void indicateError() {
+void indicateError(void) {
     printf("Error LED turned on.\n");
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_SET);    // Turn on the red LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);  // Turn off the yellow LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);  // Turn off the green LED
+    // TODO: Implement hardware-specific GPIO logic
 }
 
 /**
- * @brief Indicate a warning condition by turning on the yellow LED and turning off the
- * red and green LEDs.
- * 
- * Note: GPIO pins for the LEDs need to be defined separately.
+ * @brief Indicate a warning condition by turning on the yellow LED and turning off the red and green LEDs.
  */
-void indicateWarning() {
+void indicateWarning(void) {
     printf("Warning LED turned on.\n");
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_RESET);  // Turn off the red LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_SET);    // Turn on the yellow LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_RESET);  // Turn off the green LED
+    // TODO: Implement hardware-specific GPIO logic
 }
 
 /**
- * @brief Indicate normal operation by turning on the green LED and turning off the red and
- * yellow LEDs.
- * 
- * Note: GPIO pins for the LEDs need to be defined separately.
+ * @brief Indicate normal operation by turning on the green LED and turning off the red and yellow LEDs.
  */
-void indicateNormalOperation() {
+void indicateNormalOperation(void) {
     printf("Normal operation LED turned on.\n");
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_RESET);  // Turn off the red LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);  // Turn off the yellow LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);    // Turn on the green LED
+    // TODO: Implement hardware-specific GPIO logic
 }
 
 /**
- * @brief Turn off all LEDs by turning off the red, yellow, and green LEDs.
- * 
- * Note: GPIO pins for the LEDs need to be defined separately.
+ * @brief Turn off all LEDs.
  */
-void turnOffAllLeds() {
+void turnOffAllLeds(void) {
     printf("All LEDs turned off.\n");
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_0, GPIO_PIN_RESET);  // Turn off the red LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);  // Turn off the yellow LED
-    // HAL_GPIO_WritePin(GPIOC, GPIO_PIN_2, GPIO_PIN_SET);    // Turn on the green LED
+    // TODO: Implement hardware-specific GPIO logic
 }
 
 /**
  * @brief Turn on the specified LED color.
- *
  * @param color The LED color to turn on (RED, YELLOW, or GREEN).
  */
 void turnOnLed(LedColor color) {
