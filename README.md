@@ -28,13 +28,14 @@ The RWIP system uses a reaction wheel to control the balance of an inverted pend
 ---
 
 ## 🎯 Objectives
+The RWIP project aims to design and build an inverted pendulum system that autonomously **raises** the pendulum to an upright position within a closed-loop control system. The project objectives are as follows:
 
-- Integrate all RWIP subsystems (hardware, software, mechanical)
-- Test swing-up and stabilization mechanisms
-- Fix bugs and non-functional issues
-- Create documentation and user manuals
+The system:
 
----
+* shall be able to **raise itself** using the reaction wheel's movement alone.
+* shall maintain an upright position despite external disturbances.
+* shall achieve its motion by rotating a reaction wheel to generate torque on the entire pendulum.
+* shall be powered by a BLDC motor operated within a closed-loop control system.
 
 ## 🛠️ System Architecture
 
