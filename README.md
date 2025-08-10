@@ -11,7 +11,7 @@ A mechatronic control system that balances a pendulum in the upright position us
 
 > 🚧 Version: **v1.0**  
 > 🗓️ Finalized: **January 2024**  
-> 🧑‍💻 Developed by: **Ghassen Jamoussi, Group-B @ HTW Berlin**
+> 🧑‍💻 Developed by: **Ghassen Jamoussi together with a team of students**
 
 ---
 
